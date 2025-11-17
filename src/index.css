@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600;700&display=swap');
+
+*{
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Customize the width of the scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+}
+
+/* Customize the track (the background of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Change the background color of the track */
+  border-radius: 10px; /* Optional: round the track edges */
+}
+
+/* Customize the thumb (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  background: #2c353a; /* Change the color of the thumb */
+  border-radius: 10px; /* Optional: round the thumb edges */
+  transition: background 0.3s ease; /* Add smooth transitions */
+}
+
+/* Change the thumb's behavior when hovered */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darken the thumb when hovering */
+}
+
+/* Change the thumb's behavior when active (clicked/dragged) */
+::-webkit-scrollbar-thumb:active {
+  background: #333; /* Change the color when the thumb is active */
+}
