@@ -62,7 +62,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="lg:max-h-full max-w-full sm:min-h-[650px] flex justify-center items-center bg-gray-950 text-white bg-[url('board.png')] bg-cover">
+      <div className="lg:max-h-full max-w-full sm:min-h-[650px] flex justify-center items-center bg-gray-950 text-white bg-[url('/board.png')] bg-cover">
         <div className="container pb-8 sm:pb-0 lg:p-[70px]">
           <div className="grid grid-cols-1 sm:grid-cols-2">
             
