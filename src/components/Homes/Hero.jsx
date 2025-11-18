@@ -1,110 +1,106 @@
-import React, { useEffect, useState } from "react";
-import Book1 from "../../../public/book2.jpg";
-import Book2 from "../../../public/book1.jpg";
-import Book3 from "../../../public/book3.jpg";
+import  { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import RecentlyAdded from "./RecentlyAdded";
-import Loader from "../Loader/Loader"; // <-- new import
-
-const ImageList = [
-  {
-    id: 1,
-    img: Book1,
-    title: "His Life will forever be Changed",
-    description:
-      "lorem His Life will forever be Changed dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 2,
-    img: Book2,
-    title: "Who's there",
-    description:
-      "Who's there lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 3,
-    img: Book3,
-    title: "Lost Boy",
-    description:
-      "Lost Boy, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-];
+import Loader from "../Loader/Loader";
+import axios from "axios";
 
 const Hero = () => {
-  // 
-  // Loader Logic
-  // 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [books, setBooks] = useState([]);
+  const [activeBook, setActiveBook] = useState(null); // dynamic selected book
 
+  // Loader Logic
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("visited");
 
     if (hasVisited) {
-      // Already visited → no loader
       setLoading(false);
     } else {
-      // First time visit → show loader
       sessionStorage.setItem("visited", "true");
-      setTimeout(() => setLoading(false), 2000); // loader runs for 2 sec
+      setTimeout(() => setLoading(false), 2000);
     }
   }, []);
 
-  // 
-  // Image states
-  // 
-  const [imageId, setImageId] = React.useState(Book1);
-  const [title, setTitle] = React.useState("His Life will forever be Changed");
-  const [description, setDescription] = React.useState(
-    "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-  );
+  // Fetch books from API
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const response = await axios.get(
+          "https://bookbuy.onrender.com/api/v1/get-recent-books"
+        );
 
-  if (loading) return <Loader />;
+        const data = response.data.data;
+
+        setBooks(data);
+        setActiveBook(data[0]); // first book show on Hero initially
+      } catch (err) {
+        console.log("Error fetching books:", err);
+      }
+    };
+
+    fetchBooks();
+  }, []);
+
+  // Login Check
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+
+  if (loading || books.length === 0 || !activeBook) return <Loader />;
 
   return (
     <>
       <div className="lg:max-h-full max-w-full sm:min-h-[650px] flex justify-center items-center bg-gray-950 text-white bg-[url('/board.png')] bg-cover">
         <div className="container pb-8 sm:pb-0 lg:p-[70px]">
           <div className="grid grid-cols-1 sm:grid-cols-2">
-            
-            {/* text content */}
+
+            {/* TEXT SECTION */}
             <div className="flex flex-col justify-center gap-4 pt-12 sm:pt-4 text-center sm:text-left order-2 sm:order-1 pr-7">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white">
-                {title}
-                <p className="bg-clip-text text-transparent bg-gradient-to-b from-primary text-right text-sm to-secondary bg-black text-blue-600">
-                  by Anonymous
+                {activeBook.title}
+                <p className="bg-clip-text text-sm font-semibold bg-gradient-to-b from-primary to-secondary text-yellow-500">
+                  {activeBook.author}
                 </p>
               </h1>
-              <p className="text-sm">{description}</p>
+
+              <p className="text-sm md:text-2xl text-white font-semibold">{activeBook.desc}</p>
 
               <div className="mt-6">
-                <Link
-                  to="/all-books"
-                  className="bg-blue-500 hover:bg-blue-700 hover:scale-105 duration-200 text-white py-2 px-4 rounded-full m-8"
-                >
-                  Order Now
-                </Link>
+                {isLoggedIn ? (
+                  <Link
+                    to="/all-books"
+                    className="bg-green-500 hover:bg-green-700 hover:scale-105 duration-200 text-white py-2 px-4 rounded-full m-8"
+                  >
+                    Order Now
+                  </Link>
+                ) : (
+                  <Link
+                    to="/SignUp"
+                    className="bg-blue-500 hover:bg-blue-700 hover:scale-105 duration-200 text-white py-2 px-4 rounded-full m-8"
+                  >
+                    Get Started
+                  </Link>
+                )}
               </div>
             </div>
 
-            {/* image content */}
+            {/* IMAGE SECTION */}
             <div className="min-h-[450px] flex justify-center items-center relative order-1 sm:order-2 ">
-              <div className="h-[300px] sm:h-[450px] overflow-hidden flex justify-center items-center">
+              <div className="h-[300px] sm:h-[450px] overflow-hidden flex justify-center items-center mb-9 md:mb-24 ">
                 <img
-                  src={imageId}
+                  src={activeBook.url}
                   className="w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] object-contain"
                 />
               </div>
 
-              <div className="flex lg:flex-col lg:top-1/2 lg:-translate-y-1/2 justify-center gap-4 absolute -bottom-[40px] lg:-right-1 bg-zinc-500 rounded-full cursor-pointer p-2">
-                {ImageList.map((item) => (
+              <div className="flex lg:flex-col lg:top-1/2 lg:-translate-y-1/2 justify-center gap-4 absolute -bottom-[40px] lg:-right-1 bg-zinc-500 rounded-full cursor-pointer p-2 ">
+                {books.map((item, i) => (
                   <img
-                    key={item.id}
-                    src={item.img}
-                    onClick={() => {
-                      setImageId(item.img);
-                      setTitle(item.title);
-                      setDescription(item.description);
-                    }}
+                    key={i}
+                    src={item.url}
+                    onClick={() => setActiveBook(item)}
                     className="max-w-[100px] h-[100px] object-contain hover:scale-110 duration-200"
                   />
                 ))}
@@ -121,6 +117,8 @@ const Hero = () => {
 };
 
 export default Hero;
+
+
 
 
 // import React from "react";
