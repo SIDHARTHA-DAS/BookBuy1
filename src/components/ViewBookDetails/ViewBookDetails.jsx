@@ -51,7 +51,7 @@ const ViewBookDetails = () => {
   //  add to cart///
   const handelCart = async () => {
     const response = await axios.put(
-      "http://localhost:1000/api/v1/add-to-cart",
+      "https://bookbuy.onrender.com/api/v1/add-to-cart",
       {},
       { headers }
     );
