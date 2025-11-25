@@ -1,46 +1,50 @@
-import { useEffect, useState } from "react"
-import axios from "axios"
-import BookCard from "../BookCard/BookCard"
-import Loader from "../Loader/Loader"
+import { useEffect, useState } from "react";
+import axios from "axios";
+import BookCard from "../BookCard/BookCard";
+import Loader from "../Loader/Loader";
 
 const RecentlyAdded = () => {
-
-  const [data, setData] = useState()
+  const [data, setData] = useState();
   useEffect(() => {
-   const fetch = async() =>{
-   const response = await axios.get("https://bookbuy.onrender.com/api/v1/get-recent-books")
-   setData(response.data.data)
-   }
-   fetch()
-  }, [])
-  
+  const fetch = async () => {
+    try {
+      const response = await axios.get(
+        "https://bookbuy.onrender.com/api/v1/get-recent-books"
+      );
+      console.log(response.data); 
+      setData(response.data.data);
+    } catch (error) {
+      console.log("Error fetching:", error.response || error);
+    }
+  };
+  fetch();
+}, []);
+
   return (
     <>
-    <div>
-  <h4 className="bg-gray-900 text-white text-center pt-11 text-3xl font-semibold">
-    Recently Added Books
-  </h4>
+      <div>
+        <h4 className="bg-gray-900 text-white text-center pt-11 text-3xl font-semibold">
+          Recently Added Books
+        </h4>
 
-  {!data && (
-    <div className="flex items-center justify-center bg-slate-500 h-screen">
-      <Loader />
-    </div>
-  )}
+        {!data && (
+          <div className="flex items-center justify-center bg-slate-500 h-screen">
+            <Loader />
+          </div>
+        )}
 
-  <div className="bg-gray-900 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 p-5 place-items-center">
-    {data &&
-      data.map((item, i) => {
-        return <BookCard key={i} data={item} />;
-      })}
-  </div>
-</div>
+        <div className="bg-gray-900 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 p-5 place-items-center">
+          {data &&
+            data.map((item, i) => {
+              return <BookCard key={i} data={item} />;
+            })}
+        </div>
+      </div>
+    </>
+  );
+};
 
-      </>
-  )
-}
-
-export default RecentlyAdded
-
+export default RecentlyAdded;
 
 // import React from "react";
 
