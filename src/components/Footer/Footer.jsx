@@ -38,8 +38,8 @@ const Footer = () => {
               <img src={footerLogo} alt="Logo" className="max-w-[50px]" />
               BookBuy
             </h1>
-            <p className="text-white text-sm flex flex-wrap">
-              Discover a world of stories at your fingertips. <br /> Our bookstore brings together timeless classics,<br /> modern bestsellers,  and inspiring reads —<br /> all in one place. Whether you are  exploring new<br /> genres or searching for your next favourite book,<br /> we make reading simple,  enjoyable, and accessible for everyone.{" "}
+            <p className="text-white text-sm">
+              Discover a world of stories at your fingertips. <br /> Our bookstore brings together timeless classics,<br /> modern bestsellers,  and inspiring reads —<br /> all in one place. Whether you are  exploring new<br /> genres or searching for your next favourite book,<br /> we make reading simple,  enjoyable, and accessible <br /> for everyone.{" "}
             </p>
             <br />
             <div className="flex items-center gap-3 text-blue-500">
