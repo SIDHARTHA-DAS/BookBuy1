@@ -39,7 +39,7 @@ const Footer = () => {
               BookBuy
             </h1>
             <p className="text-white text-sm flex flex-wrap">
-              Discover a world of stories at your fingertips. <br /> Our bookstore brings together timeless classics,<br /> modern bestsellers,  and inspiring reads — all in one place. Whether you are <br /> exploring new genres or searching for your next favourite book, we make reading simple, <br /> enjoyable, and accessible for everyone.{" "}
+              Discover a world of stories at your fingertips. <br /> Our bookstore brings together timeless classics,<br /> modern bestsellers,  and inspiring reads —<br /> all in one place. Whether you are  exploring new genres or searching for your next favourite book, we make reading simple, <br /> enjoyable, and accessible for everyone.{" "}
             </p>
             <br />
             <div className="flex items-center gap-3 text-blue-500">
