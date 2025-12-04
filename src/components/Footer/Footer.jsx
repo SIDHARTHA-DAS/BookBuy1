@@ -39,8 +39,7 @@ const Footer = () => {
               BookBuy
             </h1>
             <p className="text-white">
-              Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Possimus, voluptate.{" "}
+              Discover a world of stories at your fingertips. Our bookstore brings together timeless classics, modern bestsellers, and inspiring reads — all in one place. Whether you're exploring new genres or searching for your next favourite book, we make reading simple, enjoyable, and accessible for everyone.{" "}
             </p>
             <br />
             <div className="flex items-center gap-3 text-blue-500">
