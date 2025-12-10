@@ -92,6 +92,7 @@ const Hero = () => {
                 <img
                   src={activeBook.url}
                   className="w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] object-contain"
+                  alt="books"
                 />
               </div>
 
@@ -102,6 +103,7 @@ const Hero = () => {
                     src={item.url}
                     onClick={() => setActiveBook(item)}
                     className="max-w-[100px] h-[100px] object-contain hover:scale-110 duration-200"
+                    alt="book"
                   />
                 ))}
               </div>
