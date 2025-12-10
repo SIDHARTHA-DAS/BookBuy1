@@ -24,7 +24,7 @@ const AllOrders = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          "https://bookbuy.onrender.com/api/v1/get-all-orders",
+          "https://book-buy-11up.vercel.app/api/v1/get-all-orders",
           { headers }
         );
         setAllorders(response.data.data);
@@ -44,7 +44,7 @@ const AllOrders = () => {
     try {
       const id = allorders[i]._id;
       await axios.put(
-        `https://bookbuy.onrender.com/api/v1/update-status/${id}`,
+        `https://book-buy-11up.vercel.app/api/v1/update-status/${id}`,
         values,
         { headers }
       );

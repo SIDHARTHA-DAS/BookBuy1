@@ -11,7 +11,7 @@ const BookCard = ({ data, Favourite }) => {
 
   const handleRemoveBook = async () => {
     const response = await axios.put(
-      "https://bookbuy.onrender.com/api/v1/remove-book-from-favourite",
+      "https://book-buy-11up.vercel.app/api/v1/remove-book-from-favourite",
       {},
       { headers }
     );

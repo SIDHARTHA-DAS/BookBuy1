@@ -8,7 +8,7 @@ const AllBooks = () => {
    const [data, setData] = useState()
   useEffect(() => {
    const fetch = async() =>{
-   const response = await axios.get("https://bookbuy.onrender.com/api/v1/get-all-books")
+   const response = await axios.get("https://book-buy-11up.vercel.app/api/v1/get-all-books")
    setData(response.data.data)
    }
    fetch()

@@ -27,7 +27,7 @@ const Hero = () => {
     const fetchBooks = async () => {
       try {
         const response = await axios.get(
-          "https://bookbuy.onrender.com/api/v1/get-recent-books"
+          "https://book-buy-11up.vercel.app/api/v1/get-recent-books"
         );
 
         const data = response.data.data;

@@ -52,7 +52,7 @@ const UpdateBook = () => {
         });
       } else {
         const response = await axios.put(
-          "https://bookbuy.onrender.com/api/v1/update-book",
+          "https://book-buy-11up.vercel.app/api/v1/update-book",
           Data,
           { headers }
         );
@@ -96,7 +96,7 @@ const UpdateBook = () => {
       const fetchBook = async () => {
         try {
           const response = await axios.get(
-            `https://bookbuy.onrender.com/api/v1/get-book-by-id/${id}`
+            `https://book-buy-11up.vercel.app/api/v1/get-book-by-id/${id}`
           );
           setData(response.data.data);
         } catch (err) {

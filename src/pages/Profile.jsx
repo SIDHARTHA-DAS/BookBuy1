@@ -17,7 +17,7 @@ const [Profile, setProfile] = useState()
   useEffect(() => {
 
     const fetch = async () =>{
-     const respons = await axios.get("https://bookbuy.onrender.com/api/v1/get-user-information",{headers})
+     const respons = await axios.get("https://book-buy-11up.vercel.app/api/v1/get-user-information",{headers})
      setProfile(respons.data)
     }
     fetch()

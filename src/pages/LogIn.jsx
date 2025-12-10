@@ -36,7 +36,7 @@ export default function LogIn() {
     }
 
     try {
-      const response = await axios.post("https://bookbuy.onrender.com/api/v1/sign-in", values);
+      const response = await axios.post("https://book-buy-11up.vercel.app/api/v1/sign-in", values);
       console.log(response.data);
 
       dispatch(authActions.login())

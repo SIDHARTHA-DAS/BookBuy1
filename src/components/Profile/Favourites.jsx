@@ -13,7 +13,7 @@ const Favourites = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "https://bookbuy.onrender.com/api/v1/get-favourite-books",
+        "https://book-buy-11up.vercel.app/api/v1/get-favourite-books",
         { headers }
       );
       // console.log(response.data);

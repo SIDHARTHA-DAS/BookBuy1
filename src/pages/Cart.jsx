@@ -24,7 +24,7 @@ const Cart = () => {
     const fetchCart = async () => {
       try {
         const response = await axios.get(
-          "https://bookbuy.onrender.com/api/v1/get-user-cart",
+          "https://book-buy-11up.vercel.app/api/v1/get-user-cart",
           { headers }
         );
         setCart(response.data.data);
@@ -41,7 +41,7 @@ const Cart = () => {
   const deleteItem = async (bookId) => {
     try {
       const response = await axios.put(
-        `https://bookbuy.onrender.com/api/v1/remove-from-cart/${bookId}`,
+        `https://book-buy-11up.vercel.app/api/v1/remove-from-cart/${bookId}`,
         {},
         { headers }
       );
@@ -68,7 +68,7 @@ const Cart = () => {
   const placeOrder = async () => {
     try {
       const response = await axios.post(
-        `https://bookbuy.onrender.com/api/v1/place-order`,
+        `https://book-buy-11up.vercel.app/api/v1/place-order`,
         { order: cart },
         { headers }
       );

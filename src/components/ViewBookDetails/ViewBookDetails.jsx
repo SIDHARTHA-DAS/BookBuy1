@@ -19,7 +19,7 @@ const ViewBookDetails = () => {
     const fetchBook = async () => {
       try {
         const response = await axios.get(
-          `https://bookbuy.onrender.com/api/v1/get-book-by-id/${id}`
+          `https://book-buy-11up.vercel.app/api/v1/get-book-by-id/${id}`
         );
         setData(response.data.data);
       } catch (err) {
@@ -41,7 +41,7 @@ const ViewBookDetails = () => {
   };
   const handelfavourit = async () => {
     const response = await axios.put(
-      "https://bookbuy.onrender.com/api/v1/add-book-to-favourite",
+      "https://book-buy-11up.vercel.app/api/v1/add-book-to-favourite",
       {},
       { headers }
     );
@@ -51,7 +51,7 @@ const ViewBookDetails = () => {
   //  add to cart///
   const handelCart = async () => {
     const response = await axios.put(
-      "https://bookbuy.onrender.com/api/v1/add-to-cart",
+      "https://book-buy-11up.vercel.app/api/v1/add-to-cart",
       {},
       { headers }
     );
@@ -60,7 +60,7 @@ const ViewBookDetails = () => {
 
   const deletebook = async () => {
     const response = await axios.delete(
-      "https://bookbuy.onrender.com/api/v1/delete-book",
+      "https://book-buy-11up.vercel.app/api/v1/delete-book",
       { headers }
     );
     toast(response.data.message, {

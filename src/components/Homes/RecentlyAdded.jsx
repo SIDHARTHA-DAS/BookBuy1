@@ -9,7 +9,7 @@ const RecentlyAdded = () => {
   const fetch = async () => {
     try {
       const response = await axios.get(
-        "https://bookbuy.onrender.com/api/v1/get-recent-books"
+        "https://book-buy-11up.vercel.app/api/v1/get-recent-books"
       );
       console.log(response.data); 
       setData(response.data.data);

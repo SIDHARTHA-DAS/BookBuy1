@@ -36,7 +36,7 @@ const SignUp = () => {
     }
 
     try {
-      const response = await axios.post("https://bookbuy.onrender.com/api/v1/sign-up", values);
+      const response = await axios.post("https://book-buy-11up.vercel.app/api/v1/sign-up", values);
       console.log(response.data);
 
       if (response.data.message === "SignUp SuccessFully") {

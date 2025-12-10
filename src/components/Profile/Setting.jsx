@@ -19,7 +19,7 @@ const Setting = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "https://bookbuy.onrender.com/api/v1/get-user-information",
+        "https://book-buy-11up.vercel.app/api/v1/get-user-information",
         { headers }
       );
       setProfileData(response.data);
@@ -30,7 +30,7 @@ const Setting = () => {
   }, []);
 
   const submitaddress = async ()=>{
-    const response = await axios.put("https://bookbuy.onrender.com/api/v1/update-address",{Value},{headers})
+    const response = await axios.put("https://book-buy-11up.vercel.app/api/v1/update-address",{Value},{headers})
     toast(response.data.message)
   }
 

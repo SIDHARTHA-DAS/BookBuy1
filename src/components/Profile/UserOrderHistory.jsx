@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "../Loader/Loader";
@@ -15,7 +16,7 @@ const UserOrderHistory = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          "https://bookbuy.onrender.com/api/v1/get-order-history",
+          "https://book-buy-11up.vercel.app/api/v1/get-order-history",
           { headers }
         );
         console.log(res.data.data);
