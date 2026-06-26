@@ -16,7 +16,7 @@ const Cart = () => {
   // Fetch Cart
   useEffect(() => {
     const fetchCart = async () => {
-      // ✅ Headers yahan banao - fresh token milega
+      //  Headers yahan banao - fresh token milega
       const headers = {
         id: localStorage.getItem("id"),
         authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -60,7 +60,7 @@ const Cart = () => {
       setRefresh((prev) => !prev);
     } catch (error) {
       console.log(error);
-      // ✅ 403/401 handle karo
+      //  403/401 handle karo
       if (error.response?.status === 403 || error.response?.status === 401) {
         localStorage.clear();
         toast.error("Session expire ho gaya, please login karein");
@@ -94,7 +94,7 @@ const Cart = () => {
       navigate("/profile/orderHistory");
     } catch (error) {
       console.log(error);
-      // ✅ 403/401 handle karo
+      //  403/401 handle karo
       if (error.response?.status === 403 || error.response?.status === 401) {
         localStorage.clear();
         toast.error("Session expire ho gaya, please login karein");
